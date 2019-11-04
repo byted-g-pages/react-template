@@ -1,0 +1,86 @@
+{
+  "name": "react-template",
+  "version": "1.0.0",
+  "description": "",
+  "sideEffects": [
+    "*.scss",
+    "*.less",
+    "*.css"
+  ],
+  "scripts": {
+    "dev": "k dev --eslint",
+    "build": "k build",
+    "build:sg": "cross-env ZONE=sg k build",
+    "clean": "rimraf -rf public/ && rimraf -rf pack/",
+    "lint": "npm run lint:js && npm run lint:style",
+    "lint:js": "eslint --config .eslintrc.js --fix src/**/*.js",
+    "lint:style": "stylelint --fix src/**/*.{scss,css,less}"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{css,less,scss}": [
+      "prettier --write",
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.{jsx,js}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "classnames": "^2.2.1",
+    "core-js": "^3.1.4",
+    "lodash": "^4.17.11",
+    "process": "^0.11.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^6.0.1",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@a8k/changelog": "^2.1.5",
+    "@commitlint/cli": "^8.2.0",
+    "a8k": "^2.3.0",
+    "babel-eslint": "^10.0.1",
+    "commitizen": "^4.0.3",
+    "commitlint-config-cz": "^0.12.1",
+    "cross-env": "^5.2.0",
+    "cz-customizable": "^6.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-zman": "^1.0.0",
+    "lint-staged": "^8.0.4",
+    "prettier": "^1.15.1",
+    "rimraf": "^2.6.2",
+    "serialize-javascript": "^1.6.1",
+    "stylelint": "^9.10.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.5.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "node_modules/@a8k/changelog/cz-config.js"
+    }
+  }
+}
