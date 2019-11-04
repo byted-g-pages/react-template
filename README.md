@@ -1,5 +1,8 @@
 # react-template
 
+## TODO
+必须修改 `package.json` 中的 `name`为你的项目名称
+
 ## 启动开发模式
 
 ```sh
